@@ -125,12 +125,18 @@ private DefaultTableModel modelo=new DefaultTableModel ();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-     String tipoProd= (String)cbTipoProducto.getSelectedItem();
-        String nombre= JOptionPane.showInputDialog("Ingrese el nombre del producto");
-     Double precio= Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del producto")); 
-    
-        Producto prod= new Producto(tipoProd,nombre,precio);
-        cargarTabla(prod);
+        String tipoProd = (String) cbTipoProducto.getSelectedItem();
+        try {
+            String nombre = JOptionPane.showInputDialog("Ingrese el nombre del producto");
+            Double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del producto"));
+
+            Producto prod = new Producto(tipoProd, nombre, precio);
+            cargarTabla(prod);
+
+        } catch (NumberFormatException nf) {
+            JOptionPane.showMessageDialog(this, "Ingerse el precio -SOLO NUMEROS- ");
+        }
+
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void cbTipoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoProductoActionPerformed
